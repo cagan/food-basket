@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Http\Requests\OrderCreateRequest;
 use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
-use App\Notifications\OrderCreated;
+use App\Jobs\NotifyUser;
 use App\Order;
 use App\Pizza;
 use Illuminate\Http\Request;
@@ -37,12 +38,13 @@ class OrderController extends Controller
     {
         $pizzaIds = $request->input('pizzas.*.id');
         $billingType = $request->input('billing_type');
+        $user = auth()->user();
 
         $totalAmount = $this->totalAmount($pizzaIds);
 
         $order = Order::create(
             [
-                'user_id' => auth()->id(),
+                'user_id' => $user->id,
                 'billing_type' => $billingType,
                 'total_amount' => $totalAmount,
                 'order_code' => '#' . mb_strtoupper(Str::random(6)),
@@ -51,7 +53,10 @@ class OrderController extends Controller
 
         $order->pizzas()->attach($pizzaIds);
 
-        auth()->user()->notify(new OrderCreated($order, auth()->user()));
+        OrderCreated::dispatch($order, $user);
+
+        // Job
+//        NotifyUser::dispatch($order, $user)->delay(now()->seconds(10));
 
         return (new OrderResource($order));
     }

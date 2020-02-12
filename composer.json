@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.0",
         "laravolt/avatar": "^3.0",
         "nesbot/carbon": "^2.29",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "ramsey/uuid": "^3.9"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

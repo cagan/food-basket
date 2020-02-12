@@ -47,11 +47,26 @@ class ResponseType
         'message' => 'Bad request',
     ];
 
+    public const USER_NOT_FONUD = [
+        'message' => 'There is no user with this id',
+        'status' => 'error',
+    ];
+
     /** @var array
      * SUCCESS RESPONSES
      */
     public const PIZZA_DELETED_SUCCESSFULLY = [
         'status' => 'success',
         'message' => 'Pizza deleted successfully',
+    ];
+
+    public const USER_SET_ADMIN_SUCCESS = [
+        'message' => 'User: public has been set as admin.',
+        'status' => 'success',
+    ];
+
+    public const USER_NOT_ADMIN = [
+        'message' => 'You are not admin, no permission.',
+        'status' => 'error',
     ];
 }
