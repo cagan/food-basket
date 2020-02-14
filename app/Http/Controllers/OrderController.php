@@ -53,10 +53,12 @@ class OrderController extends Controller
 
         $order->pizzas()->attach($pizzaIds);
 
+//        event(new OrderCreated($order, $user));
+
         OrderCreated::dispatch($order, $user);
 
-        // Job
-//        NotifyUser::dispatch($order, $user)->delay(now()->seconds(10));
+//        NotifyUser::dispatch();
+
 
         return (new OrderResource($order));
     }

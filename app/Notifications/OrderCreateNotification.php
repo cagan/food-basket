@@ -4,14 +4,11 @@ namespace App\Notifications;
 
 use App\Order;
 use App\User;
-use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class OrderCreateNotification extends Notification
 {
-    use Queueable;
-
     protected $order;
     protected $user;
 

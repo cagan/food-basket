@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use Exception;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -13,7 +14,6 @@ class OrderCreated
     use Dispatchable;
     use InteractsWithSockets;
     use SerializesModels;
-
 
     public $order;
     public $user;
@@ -34,6 +34,7 @@ class OrderCreated
      * Get the channels the event should broadcast on.
      *
      * @return Channel|array
+     * @throws Exception
      */
     public function broadcastOn()
     {

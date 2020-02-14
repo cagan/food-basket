@@ -3,22 +3,12 @@
 namespace App\Listeners;
 
 use App\Events\OrderCreated;
+use App\Notifications\OrderCreateNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class NotifyUser implements ShouldQueue
 {
-    use InteractsWithQueue;
-
-    public $queue = 'order-created';
-    /**
-     * Create the event listener.
-     *
-     */
-    public function __construct()
-    {
-    }
-
+    public $queue = 'orders';
     /**
      * Handle the event.
      *
@@ -27,6 +17,9 @@ class NotifyUser implements ShouldQueue
      */
     public function handle(OrderCreated $event)
     {
-        dd($event);
+//        \App\Jobs\NotifyUser::dispatch($event->order, $event->user);
+        $event->user->notify(
+            new OrderCreateNotification($event->order, $event->user)
+        );
     }
 }

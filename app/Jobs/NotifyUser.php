@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Notifications\OrderCreateNotification;
 use App\Order;
 use App\User;
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
