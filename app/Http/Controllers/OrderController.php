@@ -6,7 +6,6 @@ use App\Events\OrderCreated;
 use App\Http\Requests\OrderCreateRequest;
 use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
-use App\Jobs\NotifyUser;
 use App\Order;
 use App\Pizza;
 use Illuminate\Http\Request;
