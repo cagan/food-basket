@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ResponseType;
 use App\User;
 
 class UserController extends Controller
@@ -9,32 +10,16 @@ class UserController extends Controller
 
     public function makeUserAsAdmin($id)
     {
-        $token = header('Authorization');
         $user = User::find($id)->first();
 
         if (!$user) {
-            return response()->json(
-                [
-                    'message' => 'There is no user with this id',
-                    'status' => 'error',
-                ]
-            );
+            return response()->json(ResponseType::USER_NOT_FONUD);
         }
 
         if (!$user->setUserAsAdmin()) {
-            return response()->json(
-                [
-                    'message' => 'You are not admin, no permission.',
-                    'status' => 'error',
-                ]
-            );
+            return response()->json(ResponseType::USER_NOT_ADMIN);
         }
 
-        return response()->json(
-            [
-                'message' => "User: $id has been set as admin.",
-                'status' => 'success',
-            ]
-        );
+        return response()->json(ResponseType::USER_SET_ADMIN_SUCCESS);
     }
 }

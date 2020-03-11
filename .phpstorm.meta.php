@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-02-05 18:01:16.
+    * Generated on 2020-02-12 18:59:24.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -52,6 +52,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -213,6 +214,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -374,6 +376,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -535,6 +538,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -696,6 +700,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -857,6 +862,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -1018,6 +1024,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
@@ -1179,6 +1186,7 @@ namespace PHPSTORM_META {
         'avatar.generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
+        'cache.psr6' => \Symfony\Component\Cache\Adapter\Psr16Adapter::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
         'command.auth.resets.clear' => \Illuminate\Auth\Console\ClearResetsCommand::class,
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,

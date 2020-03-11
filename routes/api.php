@@ -14,10 +14,10 @@
 /*
  * Pizza Api Resource Routes
  */
+
 Route::apiResource('pizzas', 'PizzaController')->middleware('auth:api')->except('index');
 
 Route::get('pizzas', 'PizzaController@index');
-
 
 /*
  * Order Api Resource Routes

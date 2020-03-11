@@ -33,7 +33,6 @@ use Storage;
  * @property int|null $notifications_count
  * @property Collection|Token[] $tokens
  * @property int|null $tokens_count
- *
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
@@ -46,13 +45,11 @@ use Storage;
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
- *
  * @property string $avatar
  * @property int $active
  * @property string $activation_token
  * @property Carbon|null $deleted_at
  * @property mixed $avatar_url
- *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
  * @method static bool|null restore()
@@ -62,6 +59,8 @@ use Storage;
  * @method static Builder|User whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @property int $admin
+ * @method static Builder|User whereAdmin($value)
  */
 class User extends Authenticatable
 {
@@ -91,12 +90,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden
-        = [
-            'password',
-            'remember_token',
-            'activation_token',
-        ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'activation_token',
+    ];
 
     /**
      * The attributes that should be cast to native types.

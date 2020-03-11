@@ -4,15 +4,11 @@ namespace App\Notifications;
 
 use App\Order;
 use App\User;
-use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
 
-class OrderCreated extends Notification
+class OrderCreateNotification extends Notification
 {
-    use Queueable;
-
     protected $order;
     protected $user;
 
@@ -20,9 +16,9 @@ class OrderCreated extends Notification
      * Create a new notification instance.
      *
      * @param  Order  $order
-     * @param  Authenticatable  $user
+     * @param  User  $user
      */
-    public function __construct(Order $order, Authenticatable $user)
+    public function __construct(Order $order, User $user)
     {
         $this->order = $order;
         $this->user = $user;
