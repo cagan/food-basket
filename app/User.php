@@ -60,7 +60,7 @@ use Storage;
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @property int $admin
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAdmin($value)
+ * @method static Builder|User whereAdmin($value)
  */
 class User extends Authenticatable
 {

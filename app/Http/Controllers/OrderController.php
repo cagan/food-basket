@@ -41,7 +41,6 @@ class OrderController extends Controller
         $user = auth()->user();
 
         $totalAmount = $this->totalAmount($pizzaIds);
-
         $order = Order::create(
             [
                 'user_id' => $user->id,

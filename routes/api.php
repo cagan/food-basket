@@ -15,19 +15,9 @@
  * Pizza Api Resource Routes
  */
 
-use Ramsey\Uuid\Uuid;
-
 Route::apiResource('pizzas', 'PizzaController')->middleware('auth:api')->except('index');
 
 Route::get('pizzas', 'PizzaController@index');
-
-
-Route::get(
-    'test',
-    function () {
-        dd(Uuid::uuid4()->toString());
-    }
-);
 
 /*
  * Order Api Resource Routes
