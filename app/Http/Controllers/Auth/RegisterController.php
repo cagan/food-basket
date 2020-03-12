@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Notifications\SignUpActivate;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Laravolt\Avatar\Avatar;
-use Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
     public function register(RegisterRequest $request)
     {
@@ -37,14 +35,9 @@ class AuthController extends Controller
         );
     }
 
-    protected function storeAvatar(User $user): void
+    public function activateUser(string $token)
     {
-        $avatar = (new Avatar())->create($user->name)->getImageObject()->encode('png');
-        Storage::put('avatars/' . $user->id . '/avatar.png', (string)$avatar);
-    }
 
-    public function signupActivate(string $token)
-    {
         $user = User::where('activation_token', $token)->first();
 
         if (!$user) {
@@ -67,23 +60,5 @@ class AuthController extends Controller
         return (new UserResource($user))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-    }
-
-    public function logout(Request $request)
-    {
-        $request->user()->token()->revoke();
-
-        return response()->json(
-            [
-                'message' => 'Successfully logged out',
-                'status' => 'success',
-            ],
-            Response::HTTP_UNAUTHORIZED
-        );
-    }
-
-    public function user(Request $request)
-    {
-        return response()->json($request->user(), Response::HTTP_OK);
     }
 }
