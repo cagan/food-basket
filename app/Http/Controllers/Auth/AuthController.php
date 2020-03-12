@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Notifications\SignUpActivate;
+use App\Repositories\UserRepositoryInterface;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Laravolt\Avatar\Avatar;
-use Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
@@ -37,15 +36,9 @@ class AuthController extends Controller
         );
     }
 
-    protected function storeAvatar(User $user): void
+    public function signupActivate(string $token, UserRepositoryInterface $userRepository)
     {
-        $avatar = (new Avatar())->create($user->name)->getImageObject()->encode('png');
-        Storage::put('avatars/' . $user->id . '/avatar.png', (string)$avatar);
-    }
-
-    public function signupActivate(string $token)
-    {
-        $user = User::where('activation_token', $token)->first();
+        $user = $userRepository->findBy('activation_token', $token);
 
         if (!$user) {
             response()->json(

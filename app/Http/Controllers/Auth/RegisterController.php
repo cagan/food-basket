@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Notifications\SignUpActivate;
-use App\User;
+use App\Repositories\UserRepositoryInterface;
+use App\Services\Avatar\AvatarServiceInterface;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class RegisterController extends Controller
 {
-    public function register(RegisterRequest $request)
-    {
-        $user = User::create(
+    public function register(
+        RegisterRequest $request,
+        AvatarServiceInterface $avatarService,
+        UserRepositoryInterface $userRepository
+    ) {
+        $user = $userRepository->create(
             [
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
@@ -23,7 +27,8 @@ class RegisterController extends Controller
             ]
         );
 
-        $this->storeAvatar($user);
+        $avatarService->store($user);
+
         $user->notify(new SignUpActivate($user));
 
         return response()->json(
@@ -35,10 +40,9 @@ class RegisterController extends Controller
         );
     }
 
-    public function activateUser(string $token)
+    public function activateUser(string $token, UserRepositoryInterface $userRepository)
     {
-
-        $user = User::where('activation_token', $token)->first();
+        $user = $userRepository->findBy('activation_token', $token);
 
         if (!$user) {
             response()->json(
@@ -50,12 +54,7 @@ class RegisterController extends Controller
             );
         }
 
-        $user->update(
-            [
-                'active' => true,
-                'activation_token' => '',
-            ]
-        );
+        $userRepository->update($user->id, ['active' => true, 'activation_token' => '']);
 
         return (new UserResource($user))
             ->response()

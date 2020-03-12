@@ -1,8 +1,4 @@
 <?php
-/*
- * Pizza Api Resource Routes
- */
-
 
 Route::apiResource('pizzas', 'PizzaController')->middleware('auth:api')->except('index');
 
@@ -24,7 +20,7 @@ Route::group(
     function () {
         Route::post('login', 'LoginController@login');
         Route::post('register', 'RegisterController@register');
-        Route::post('register/activate/{token}', 'RegisterController@activateUser');
+        Route::get('register/activate/{token}', 'RegisterController@activateUser');
 
         Route::group(
             [
